@@ -23,7 +23,7 @@ export default function IndexPage() {
     // For now, it's just copying the inputText to outputText
     if (!isGenerating) {
         try {
-          const response = await fetch('http://127.0.0.1:5000/process_string', {
+          const response = await fetch('http://tunnel.poligpt.ca:8000/process_string', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
