@@ -30,6 +30,8 @@ export default function IndexPage() {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': "http://poligpt.ca",
+              'Access-Control-Allow-Methods': "POST",
+
             },
             
             body: JSON.stringify({ prompt: inputText })
