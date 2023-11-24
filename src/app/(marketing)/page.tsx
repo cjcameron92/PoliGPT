@@ -29,8 +29,9 @@ export default function IndexPage() {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': "http://poligpt.ca",
+              'Access-Control-Allow-Origin': "https://poligpt.ca",
               'Access-Control-Allow-Methods': "POST",
+              'Access-Control-Allow-Credentials': "true",
 
             },
             
