@@ -57,7 +57,7 @@ export default function IndexPage() {
           AI-Driven Canadian Political Analysis
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-          Provides in-depth, AI-powered insights into Canada's political scene. It simplifies complex policies and debates, offering users timely and accurate information on Canadian politics. Ideal for students, researchers, and enthusiasts seeking a clearer understanding of the political landscape.
+          Provides in-depth, AI-powered insights into Canada&apos;s political scene. It simplifies complex policies and debates, offering users timely and accurate information on Canadian politics. Ideal for students, researchers, and enthusiasts seeking a clearer understanding of the political landscape.
           </p>
           {/* <div className="space-x-4">
             <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
