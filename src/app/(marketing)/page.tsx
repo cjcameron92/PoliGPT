@@ -24,7 +24,7 @@ export default function IndexPage() {
     if (!isGenerating) {
       setGenerating(true)
         try {
-          const response = await fetch('http://tunnel.poligpt.ca:8000/process_string', {
+          const response = await fetch('https://tunnel.poligpt.ca:8000/process_string', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
