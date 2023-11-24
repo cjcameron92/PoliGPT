@@ -25,10 +25,9 @@ export default function IndexPage() {
     if (!isGenerating) {
       setGenerating(true)
         try {
-          const response = await fetch('http://68.183.196.238:8000/process_string', {
+          const response = await fetch('http://tunnel.poligpt.ca:5000/process_string', {
             method: 'POST',
             headers: {
-              'User-Agent': 'User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': "*",
             },
