@@ -20,13 +20,15 @@ export default function IndexPage() {
   // Function to handle the click event of the Generate button
   const asyhandleGenerate = async () => {
     // Logic to process the inputText and set the outputText
-    // For now, it's just copying the inputText to outputText
+    // For now, it's just copying the inputText to outputTexts
     if (!isGenerating) {
+      setGenerating(true)
         try {
           const response = await fetch('http://tunnel.poligpt.ca:8000/process_string', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*' // Include CORS header if needed (adjust as necessary)
             },
             body: JSON.stringify({ prompt: inputText })
           });
@@ -88,32 +90,36 @@ export default function IndexPage() {
 
       {/* New section for the text boxes and button */}
       <section className="container mx-auto py-8">
-  <div className="flex justify-center items-center space-x-4">
+  <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+    {/* Textarea for input */}
     <textarea
-      className="w-1/3 p-4 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 ease-in-out focus:border-blue-500 focus:ring focus:ring-blue-200"
+      className="w-full sm:w-1/3 p-4 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 ease-in-out focus:border-blue-500 focus:ring focus:ring-blue-200"
       placeholder="Message poligpt"
       value={inputText}
       onChange={(e) => {
         setInputText(isGenerating ? inputText : e.target.value);
-    
-      }}    />
-<button
-  onClick={asyhandleGenerate}
-  className="flex items-center justify-center px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
->
-  Generate
-  {isGenerating && (
-    <Icons.spinner className="ml-2 h-4 w-4 animate-spin" />
-  )}
-</button>
+      }}
+    />
+    {/* Generate Button */}
+    <button
+      onClick={asyhandleGenerate}
+      className="flex items-center justify-center px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+    >
+      Generate
+      {isGenerating && (
+        <Icons.spinner className="ml-2 h-4 w-4 animate-spin" />
+      )}
+    </button>
+    {/* Textarea for output */}
     <textarea
-      className="w-1/3 p-4 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 ease-in-out focus:border-blue-500 focus:ring focus:ring-blue-200"
+      className="w-full sm:w-1/3 p-4 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 ease-in-out focus:border-blue-500 focus:ring focus:ring-blue-200"
       placeholder=""
       value={outputText}
       readOnly
     />
   </div>
 </section>
+
 
     </>
   )
