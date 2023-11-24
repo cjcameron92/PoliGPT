@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { Inter as FontSans } from "next/font/google"
 import { Icons } from '@/components/icons'
 import { toast } from '@/components/ui/use-toast'
+import { ToastAction } from '@/components/ui/toast'
 
 
 export default function IndexPage() {
@@ -28,9 +29,7 @@ export default function IndexPage() {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': "https://poligpt.ca",
-              'Access-Control-Allow-Methods': "POST",
-              'Access-Control-Allow-Credentials': "true",
+              'Access-Control-Allow-Origin': "*",
 
             },
             
@@ -53,8 +52,10 @@ export default function IndexPage() {
         }
     } else {
       toast({
-        title: "Still Generating...",
-        description: "Please wait...",
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "A request has already been made",
+        action: <ToastAction altText="Try again">Try again</ToastAction>,
       })
     }
   }

@@ -74,7 +74,6 @@ export const metadata = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
 
       <head />
       <body
