@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Inter as FontSans } from "next/font/google"
 import { Icons } from '@/components/icons'
+import { toast } from '@/components/ui/use-toast'
 
 
 
@@ -28,8 +29,8 @@ export default function IndexPage() {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*' // Include CORS header if needed (adjust as necessary)
             },
+            
             body: JSON.stringify({ prompt: inputText })
           });
       
@@ -47,6 +48,11 @@ export default function IndexPage() {
         } catch (error) {
           console.error(`Error fetching data: `, error)
         }
+    } else {
+      toast({
+        title: "Still Generating...",
+        description: "Please wait...",
+      })
     }
   }
 
