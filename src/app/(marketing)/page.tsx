@@ -10,6 +10,7 @@ import { Inter as FontSans } from "next/font/google"
 import { Icons } from '@/components/icons'
 import { toast } from '@/components/ui/use-toast'
 
+import axios from "axios";
 
 
 export default function IndexPage() {
@@ -25,29 +26,22 @@ export default function IndexPage() {
     if (!isGenerating) {
       setGenerating(true)
         try {
-          const response = await fetch('http://tunnel.poligpt.ca:8000/process_string', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': "https://poligpt.ca",
-              'Access-Control-Allow-Methods': "POST",
-              'Access-Control-Allow-Credentials': "true",
+          const response = await axios.post('http://tunnel.poligpt.ca:8000/process_string')
+          .then(function (response) {
 
-            },
-            
-            body: JSON.stringify({ prompt: inputText })
-          });
-      
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
+            console.log(response)
+          }).catch(function (error) {
+            console.log(error);
+          })
+          .finally(function () {
+            console.log("issue")
+          })
+    
+          // console.log(data);
 
-          const data = await response.json();
-          console.log(data);
-
-          setOutputText(data.response);
-          setInputText("");
-          setGenerating(false);
+          // setOutputText(data.response);
+          // setInputText("");
+          // setGenerating(false);
 
         } catch (error) {
           console.error(`Error fetching data: `, error)
