@@ -25,11 +25,10 @@ export default function IndexPage() {
     if (!isGenerating) {
       setGenerating(true)
         try {
-          const response = await fetch('http://tunnel.poligpt.ca:5000/process_string', {
+          const response = await fetch('http://143.110.222.152/process_string', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': "*",
             },
             
             body: JSON.stringify({ prompt: inputText })
